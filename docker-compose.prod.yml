@@ -1,0 +1,27 @@
+version: '3.8'
+
+#  If you have multiple environments, you may want to look at using a
+#  docker-compose.override.yml configuration file. With this approach,
+#  you'd add your base config to a docker-compose.yml file and then
+#  use a docker-compose.override.yml file to override those config
+#  settings based on the environment.
+
+services:
+  web:
+    build: ./app
+    command: gunicorn configuration.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.prod
+    depends_on:
+      - db
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.prod.db
+
+volumes:
+  postgres_data:
