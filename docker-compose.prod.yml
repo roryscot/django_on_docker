@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.11'
 
 #  If you have multiple environments, you may want to look at using a
 #  docker-compose.override.yml configuration file. With this approach,
