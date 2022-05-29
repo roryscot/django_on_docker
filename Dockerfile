@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM 3.11-rc-bullseye
+FROM python:3.11-rc-bullseye
 
 EXPOSE 8000
 
